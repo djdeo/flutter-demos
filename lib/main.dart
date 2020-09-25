@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title:'Flutter Abnormal',
+        debugShowCheckedModeBanner: false, // 去掉右上角的debug图标
         theme:ThemeData.light(),
         home:BottomAppBarDemo()
     );
