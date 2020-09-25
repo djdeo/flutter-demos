@@ -1,16 +1,46 @@
-# my_flutter_app
+# 底部导航栏
 
-A new Flutter project.
+## 基础版
 
-## Getting Started
+通过重写 `initState` 来展示不同界面
 
-This project is a starting point for a Flutter application.
+```dart
+@override
+void ininState() {
+    list
+      ..add(HomeScreen())
+      ...// other pages
+    super.initState()
+}
 
-A few resources to get you started if this is your first Flutter project:
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+导航UI
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+主要结构是 BottomNavigationBar > BottomNavigationBarItem > Icon + Text
+
+
+
+```dart
+
+bottomNavigationBar: BottomNavigationBar(
+         items: [
+           BottomNavigationBarItem(
+             icon:Icon(
+               Icons.home,
+               color:_BottomNavigationColor,
+             ),
+             title:Text(
+               'Home',
+               style:TextStyle(color:_BottomNavigationColor)
+             )
+           ), ...],
+           currentIndex: _currentIndex,
+           onTap:(int index) {
+               setState(() {
+                   _currentIndex = index;
+               })
+           },
+           ...
+...
+```
