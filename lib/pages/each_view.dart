@@ -24,17 +24,27 @@ class _EachViewState extends State<EachView> {
             ClipPath(
               clipper: BottomClipper(),
               child: Container(
-                color: Colors.lightBlueAccent,
+                color: Colors.yellow[600],
                 height: 200,
               ),
             ),
+            Container(
+              color: Colors.yellow[500],
+              padding: EdgeInsets.all(30.0),
+              child: Text('inside container'),
+            ),
             Center(
                 child: widget._title == 'Home'
-                    ? Text(wordPair.toString())
-                    : RaisedButton(
+                    ? Text(wordPair.toString(), textScaleFactor: 1.5,)
+                    : RaisedButton.icon(
+                        icon: Icon(Icons.chevron_left),
+                        color: Colors.lightBlueAccent,
+                        textColor: Colors.white,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
                         onPressed: () =>
                             Navigator.pop(context, 'son json data'),
-                        child: Text('返回'))),
+                        label: Text('返回'))),
+
           ],
         ));
   }

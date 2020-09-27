@@ -31,6 +31,7 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
           Icons.add,
           color: Colors.white,
         ),
+        backgroundColor: Colors.blue[650],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
