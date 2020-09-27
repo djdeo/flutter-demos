@@ -1,3 +1,4 @@
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -12,6 +13,8 @@ class EachView extends StatefulWidget {
 class _EachViewState extends State<EachView> {
   @override
   Widget build(BuildContext context) {
+    // 使用第三方包
+    final wordPair = WordPair.random();
     return Scaffold(
         appBar: AppBar(
           title: Text(widget._title),
@@ -26,10 +29,12 @@ class _EachViewState extends State<EachView> {
               ),
             ),
             Center(
-              child: widget._title =='Home'
-              ?Text(widget._title)
-              :FlatButton(onPressed: () => Navigator.pop(context, 'son json data'), child: Text('返回'))
-            ),
+                child: widget._title == 'Home'
+                    ? Text(wordPair.toString())
+                    : RaisedButton(
+                        onPressed: () =>
+                            Navigator.pop(context, 'son json data'),
+                        child: Text('返回'))),
           ],
         ));
   }
