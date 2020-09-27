@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/bottom_appBar_demo.dart';
+import 'package:my_flutter_app/pages/choose_location.dart';
+import 'package:my_flutter_app/pages/home.dart';
+import 'package:my_flutter_app/pages/loading.dart';
 
-void main()=> runApp(new MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title:'Flutter Abnormal',
-        debugShowCheckedModeBanner: false, // 去掉右上角的debug图标
-        theme:ThemeData.light(),
-        home:BottomAppBarDemo()
-    );
-  }
-}
+void main() =>
+    runApp(MaterialApp(initialRoute: '/home', debugShowCheckedModeBanner: false,
+        // 配置路由
+        routes: {
+          '/': (context) => Loading(),
+          '/home': (context) => Home(),
+          '/location': (context) => ChooseLocation()
+        }));
