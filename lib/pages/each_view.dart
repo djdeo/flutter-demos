@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class EachView extends StatefulWidget {
   String _title;
   EachView(this._title);
@@ -25,7 +26,9 @@ class _EachViewState extends State<EachView> {
               ),
             ),
             Center(
-              child: Text(widget._title),
+              child: widget._title =='Home'
+              ?Text(widget._title)
+              :FlatButton(onPressed: () => Navigator.pop(context, 'son json data'), child: Text('返回'))
             ),
           ],
         ));

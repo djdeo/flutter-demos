@@ -21,9 +21,10 @@ class _BottomAppBarDemoState extends State<BottomAppBarDemo> {
     return Scaffold(
       body: _eachView[_index],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(
+        onPressed: () async {
+          var res = await Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => EachView('New page')));
+          debugPrint('$res');
         },
         tooltip: 'Increament',
         child: Icon(
