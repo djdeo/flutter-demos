@@ -4,7 +4,7 @@ import 'package:my_flutter_app/pages/home.dart';
 import 'package:my_flutter_app/pages/loading.dart';
 
 void main() =>
-    runApp(MaterialApp(initialRoute: '/home', debugShowCheckedModeBanner: false,
+    runApp(MaterialApp(initialRoute: '/', debugShowCheckedModeBanner: false,
         // 配置路由
         routes: {
           '/': (context) => Loading(),
