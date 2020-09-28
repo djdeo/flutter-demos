@@ -9,7 +9,7 @@ class _HomeState extends State<Home> {
   Map data = {};
   @override
   Widget build(BuildContext context) {
-    data = ModalRoute.of(context).settings.arguments;
+    data = data.isNotEmpty?data: ModalRoute.of(context).settings.arguments;
     print(data);
     return Scaffold(
       body: SafeArea(
@@ -18,8 +18,18 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               FlatButton.icon(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/location');
+                  onPressed: () async {
+                    dynamic res = await Navigator.pushNamed(context, '/location');
+                    if (res != null) {
+                      setState(() {
+                        data = {
+                          'time': res['time'],
+                          'location': res['location'],
+                          'isDaytime': res['isDaytime'],
+                          'flag': res['flay'],
+                        };
+                      });
+                    }
                   },
                   icon: Icon(Icons.edit_location),
                   label: Text('Edit Location')),
