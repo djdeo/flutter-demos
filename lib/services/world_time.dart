@@ -12,7 +12,7 @@ class WorldTime {
 
   Future<void> getTime() async {
     Response response =
-        await Dio().get('http://worldtimeapi.org/api/timezone/Europe/London');
+        await Dio().get('http://worldtimeapi.org/api/timezone/$url');
     String datetime = response.data['datetime'];
     String offset = response.data['utc_offset'].substring(1, 3);
     // print(datetime);
