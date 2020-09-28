@@ -9,7 +9,7 @@ class _HomeState extends State<Home> {
   Map data = {};
   @override
   Widget build(BuildContext context) {
-    data = data.isNotEmpty?data: ModalRoute.of(context).settings.arguments;
+    data = data.isNotEmpty ? data : ModalRoute.of(context).settings.arguments;
     print(data);
     return Scaffold(
       body: SafeArea(
@@ -19,7 +19,8 @@ class _HomeState extends State<Home> {
             children: [
               FlatButton.icon(
                   onPressed: () async {
-                    dynamic res = await Navigator.pushNamed(context, '/location');
+                    dynamic res =
+                        await Navigator.pushNamed(context, '/location');
                     if (res != null) {
                       setState(() {
                         data = {
