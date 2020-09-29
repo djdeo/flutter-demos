@@ -24,15 +24,15 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: Center(child: MyButton()),
+      body: Center(child: MyFlatButton()),
     );
   }
 }
 
-class MyButton extends StatelessWidget {
+class MyFlatButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         final snackBar = SnackBar(
           content: Text('you clicked'),
@@ -41,9 +41,6 @@ class MyButton extends StatelessWidget {
       },
       child: Container(
         padding: EdgeInsets.all(12.0),
-        decoration: BoxDecoration(
-            color: Theme.of(context).buttonColor,
-            borderRadius: BorderRadius.circular(8.0)),
         child: Text('My button'),
       ),
     );
