@@ -1,48 +1,41 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MyApp(
+      items: List<String>.generate(20, (index) => "item ${index + 1}"),
+    ));
 
 class MyApp extends StatelessWidget {
-  final appTitle = 'Drawer Demo';
+  final List<String> items;
+
+  MyApp({Key key, @required this.items}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final title = 'Dissmsing time';
     return MaterialApp(
-      title: appTitle,
-      home: MyHomePage(title: appTitle),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+      title: title,
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text(title),
+          ),
+          body: ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              final item = items[index];
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: Center(child: MyFlatButton()),
-    );
-  }
-}
-
-class MyFlatButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        final snackBar = SnackBar(
-          content: Text('you clicked'),
-        );
-        Scaffold.of(context).showSnackBar(snackBar);
-      },
-      child: Container(
-        padding: EdgeInsets.all(12.0),
-        child: Text('My button'),
-      ),
+              return Dismissible(
+                key: Key(item),
+                onDismissed: (direction) {
+                  items.removeAt(index);
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text('$item dismissed'),
+                  ));
+                },
+                background: Container(color: Colors.red[300],),
+                child: ListTile(title: Text('$item')),
+              );
+            },
+          )),
     );
   }
 }
