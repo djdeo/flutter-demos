@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/pages/searchPage.dart';
+import './pages/feedback.dart';
+import './pages/data-entry.dart';
+import './pages/data-display.dart';
+import './pages/general.dart';
+import './pages/layout.dart';
+import './pages/navigation.dart';
+import './pages/searchPage.dart';
 
 void main() => runApp(MaterialApp(
       home: MyApp(),
@@ -14,9 +20,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   // List<String> _tabs = ['General', 'Layout', 'Navigation', 'Data Entry', 'Data Display', 'Feedback', 'Other'];
   var _tabsObj = {
-    'General': SearchPage(),
-    'Layout': SearchPage(),
-    'Navigation': SearchPage(),
+    'General': GeneralPage(),
+    'Layout': LayoutPage(),
+    'Navigation': NavigationPage(),
+    'DataEntry': DataEntryPage(),
+    'DataDisplay': DataDisplayPage(),
+    'Feedback': FeedbackPage(),
+    'Other': SearchPage(),
   };
 
   @override
@@ -27,6 +37,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
         appBar: AppBar(
           title: const Text('TabBar Sample'),
           bottom: TabBar(
+            isScrollable: true,
             tabs: _tabsObj.keys.map((String name) => Tab(text: name)).toList(),
           ),
         ),
