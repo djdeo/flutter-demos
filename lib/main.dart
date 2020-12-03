@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/pages/animations.dart';
 import './pages/feedback.dart';
 import './pages/data-entry.dart';
 import './pages/data-display.dart';
@@ -27,6 +28,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
     'DataDisplay': DataDisplayPage(),
     'Feedback': FeedbackPage(),
     'Other': SearchPage(),
+    'Animation': AnimationPage(),
   };
 
   @override
