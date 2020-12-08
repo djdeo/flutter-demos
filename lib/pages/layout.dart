@@ -200,7 +200,7 @@ class _LayoutPageState extends State<LayoutPage> {
                         child: Container(
                           color: Colors.deepPurple[400],
                           // 没动画效果
-                          child: AnimatedAlign( 
+                          child: AnimatedAlign(
                             alignment: _alignment,
                             curve: Curves.bounceOut,
                             duration: Duration(milliseconds: 1500),
@@ -224,6 +224,19 @@ class _LayoutPageState extends State<LayoutPage> {
                       ),
                     ],
                   ),
+                  Container(
+                    color: Colors.blue[300],
+                    child: Baseline(
+                      child: Container(
+                        color: Colors.red[200],
+                        height: 60.0,
+                        width: 120.0,
+                        child: Text('Baseline'),
+                      ),
+                      baseline: -10.0,
+                      baselineType: TextBaseline.alphabetic,
+                    ),
+                  )
                 ],
               ),
               flex: 3,
