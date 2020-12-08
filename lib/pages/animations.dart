@@ -98,6 +98,7 @@ class _AnimationPageState extends State<AnimationPage> {
     );
   }
 
+  // model
   Widget _model() {
     return AnimatedPhysicalModel(
       duration: Duration(milliseconds: 600),
@@ -106,13 +107,26 @@ class _AnimationPageState extends State<AnimationPage> {
       shadowColor: Colors.black,
       color: Colors.white,
       elevation: _selected ? 0.0 : 6.0,
-      borderRadius: _selected ? BorderRadius.all(Radius.circular(0)) : BorderRadius.all(Radius.circular(10)),
+      borderRadius: _selected
+          ? BorderRadius.all(Radius.circular(0))
+          : BorderRadius.all(Radius.circular(10)),
       child: Container(
         height: 120,
         width: 120,
         color: Colors.blue[50],
-        child: FlutterLogo(size:50),
+        child: FlutterLogo(size: 50),
       ),
+    );
+  }
+
+  Widget _fadeScaler(num) {
+    return AnimatedSwitcher(
+      duration: Duration(milliseconds: 500),
+      transitionBuilder: (child, animation) => ScaleTransition(
+        child: child,
+        scale: animation,
+      ),
+      child: Text('$num', key: ValueKey(num),style: TextStyle(fontSize: _fontSize),),
     );
   }
 
@@ -160,6 +174,7 @@ class _AnimationPageState extends State<AnimationPage> {
           _gridItemContainer('AnimatedOpacity', _opacity(), 'expand'),
           _gridItemContainer('AnimatedPadding', _padding(), 'expand'),
           _gridItemContainer('AnimatedPhysicalModel', _model(), 'expand'),
+          _gridItemContainer('AnimatedSwitcher', _fadeScaler(_fontSize), 'expose'),
         ],
       ),
     );
