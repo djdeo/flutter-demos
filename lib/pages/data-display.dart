@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 class DataDisplayPage extends StatelessWidget {
   final arguments;
 
+  final _imageUrl =
+      'https://images.unsplash.com/photo-1565898835704-3d6be4a2c98c?fit=crop&w=200&q=60';
+
   // BackdropFilter
   Widget _backdropFilter() {
     return BackdropFilter(
@@ -39,9 +42,7 @@ class DataDisplayPage extends StatelessWidget {
     );
   }
 
-  final _imageUrl =
-      'https://images.unsplash.com/photo-1565898835704-3d6be4a2c98c?fit=crop&w=200&q=60';
-
+  // ClipRRect round corner
   Widget _roundClip() {
     return ClipRRect(
       borderRadius: BorderRadius.circular(50),
@@ -50,6 +51,26 @@ class DataDisplayPage extends StatelessWidget {
         height: 100,
         child: Image.network(_imageUrl, fit: BoxFit.cover),
       ),
+    );
+  }
+
+  // DecoratedBox
+  Widget _decoratedBox() {
+    return DecoratedBox(
+      position: DecorationPosition.background,
+      decoration: BoxDecoration(
+          color: Colors.grey[100],
+          border: Border.all(
+              width: 4.0, color: Colors.lightGreen, style: BorderStyle.solid),
+          borderRadius: BorderRadius.zero,
+          shape: BoxShape.rectangle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.red[200],
+              blurRadius: 10.0,
+              spreadRadius: 4.0,
+            ),
+          ]),
     );
   }
 
@@ -72,7 +93,19 @@ class DataDisplayPage extends StatelessWidget {
         ClipRect(
           child: _banner(),
         ),
-        _roundClip()
+        _roundClip(),
+        Column(
+          children: [
+            Container(
+              margin: EdgeInsets.all(10.0),
+              width: 200,
+              height: 150,
+              child: _decoratedBox(),
+            ),
+            SizedBox(height: 10.0,),
+            Text('DecoratedBox')
+          ],
+        )
       ],
     );
   }
