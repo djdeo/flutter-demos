@@ -45,11 +45,11 @@ class DataDisplayPage extends StatelessWidget {
   // ClipRRect round corner
   Widget _roundClip() {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(50),
+      borderRadius: BorderRadius.circular(100),
       child: SizedBox(
         width: 100,
         height: 100,
-        child: Image.network(_imageUrl, fit: BoxFit.cover),
+        child: Container(width: 80,height: 80,child: Placeholder(color: Colors.blue[300],),),
       ),
     );
   }
