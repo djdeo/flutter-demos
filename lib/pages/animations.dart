@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../bus/EventBus.dart';
-import 'package:my_flutter_app/components/SpinContainer.dart';
+import '../components/SpinContainer.dart';
+import '../components/BoxTransform.dart';
 
 EventBus bus = EventBus();
 
@@ -126,7 +127,11 @@ class _AnimationPageState extends State<AnimationPage> {
         child: child,
         scale: animation,
       ),
-      child: Text('$num', key: ValueKey(num),style: TextStyle(fontSize: _fontSize),),
+      child: Text(
+        '$num',
+        key: ValueKey(num),
+        style: TextStyle(fontSize: _fontSize),
+      ),
     );
   }
 
@@ -174,14 +179,18 @@ class _AnimationPageState extends State<AnimationPage> {
           _gridItemContainer('AnimatedOpacity', _opacity(), 'expand'),
           _gridItemContainer('AnimatedPadding', _padding(), 'expand'),
           _gridItemContainer('AnimatedPhysicalModel', _model(), 'expand'),
-          _gridItemContainer('AnimatedSwitcher', _fadeScaler(_fontSize), 'expose'),
+          _gridItemContainer(
+              'AnimatedSwitcher', _fadeScaler(_fontSize), 'expose'),
+          _gridItemContainer(
+              'DecorationTween', BoxTransform(_selected), 'expand', _selected),
         ],
       ),
     );
   }
 }
 
-Widget _gridItemContainer(String hint, Widget component, [String eventName]) {
+Widget _gridItemContainer(String hint, Widget component,
+    [String eventName, bool args]) {
   return Stack(children: [
     Text(hint),
     Container(
@@ -196,7 +205,7 @@ Widget _gridItemContainer(String hint, Widget component, [String eventName]) {
       color: Colors.orange[200],
       tooltip: hint,
       onPressed: () {
-        bus.emit(eventName);
+        bus.emit(eventName, args);
       },
     )
   ]);
