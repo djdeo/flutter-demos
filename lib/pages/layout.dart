@@ -236,11 +236,23 @@ class _LayoutPageState extends State<LayoutPage> {
                       baseline: -10.0,
                       baselineType: TextBaseline.alphabetic,
                     ),
-                  )
+                  ),
                 ],
               ),
               flex: 3,
             ),
+            Container(
+              color: Colors.blue,
+              child: SizedOverflowBox(
+                size: Size(100.0, 100.0),
+                alignment: AlignmentDirectional.topCenter,
+                child: Container(
+                  height: 50.0,
+                  width: 50,
+                  color: Colors.blue[50],
+                ),
+              ),
+            )
           ],
         ));
   }
