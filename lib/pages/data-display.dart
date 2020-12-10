@@ -1,12 +1,10 @@
 import 'dart:ui';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
 class DataDisplayPage extends StatelessWidget {
   final arguments;
-
-  final _imageUrl =
-      'https://images.unsplash.com/photo-1565898835704-3d6be4a2c98c?fit=crop&w=200&q=60';
 
   // BackdropFilter
   Widget _backdropFilter() {
@@ -49,7 +47,13 @@ class DataDisplayPage extends StatelessWidget {
       child: SizedBox(
         width: 100,
         height: 100,
-        child: Container(width: 80,height: 80,child: Placeholder(color: Colors.blue[300],),),
+        child: Container(
+          width: 80,
+          height: 80,
+          child: Placeholder(
+            color: Colors.blue[300],
+          ),
+        ),
       ),
     );
   }
@@ -71,6 +75,18 @@ class DataDisplayPage extends StatelessWidget {
               spreadRadius: 4.0,
             ),
           ]),
+    );
+  }
+
+  // Transform
+  Widget _transform() {
+    return Transform(
+      transform: Matrix4.skewY(0.3)..rotateZ(-math.pi / 12.0),
+      alignment: Alignment.topRight,
+      child: Container(
+        color: Colors.amber[500],
+        child: Text('Transform Skew'),
+      ),
     );
   }
 
@@ -97,15 +113,16 @@ class DataDisplayPage extends StatelessWidget {
         Column(
           children: [
             Container(
-              margin: EdgeInsets.all(10.0),
+              margin: EdgeInsets.all(5.0),
               width: 200,
               height: 150,
               child: _decoratedBox(),
             ),
-            SizedBox(height: 10.0,),
-            Text('DecoratedBox')
+
+            Text('DecoratedBox'),
+             _transform()
           ],
-        )
+        ),
       ],
     );
   }

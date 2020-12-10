@@ -41,7 +41,7 @@ class _BoxTransformState extends State<BoxTransform>
   @override
   void initState() {
     _controller = AnimationController(
-      vsync: this,
+      value: this,
       duration: const Duration(seconds: 1),
     );
     bus.on('expand', (arg) {

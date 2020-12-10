@@ -15,7 +15,7 @@ class _SpinConatinerState extends State<SpinConatiner>
     super.initState();
     _controller = AnimationController(
       duration: const Duration(seconds: 5),
-      vsync: this,
+      value: this,
     )..repeat();
   }
 
